@@ -89,7 +89,11 @@ module Fluent
     end
 
     def slice(index, num)
-      self.dup
+      if index > 0 || num == 0
+        ArrayEventStream.new([])
+      else
+        self.dup
+      end
     end
 
     def each(&block)
